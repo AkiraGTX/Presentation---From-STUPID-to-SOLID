@@ -22,6 +22,7 @@
 .fade-out-1s {
     transition: opacity 0.5s, visibility 0.5s, padding 0.1s ease-out 1s, margin 0.1s ease-out 1s, max-height 0.2s ease-out 1s;
     max-height: 100px;
+    padding-bottom: 3px !important;
 }
 
 .present .fade-out-1s {
@@ -37,7 +38,7 @@
 
 
 /****************************************************************
-*****\  =FADE-IN LIST ITEMS (ON SLIDE SHOW) \*******************************************************
+*****\  =FADE-IN LIST ITEMS (ON SLIDE SHOW OR FRAGMENT) \*******************************************************
 ***************************************************************************************/
 
 @keyframes fadeIn { 
@@ -51,46 +52,82 @@
   }
 }
 
-.present .fade-in-list .fade-in-list-item {
+.present .fade-in-list:not(.fragment) .fade-in-list--item {
   animation: fadeIn 1s linear;
   animation-fill-mode:both;
 }
 
-.fade-in-list .fade-in-list-item:nth-child(1){ animation-delay: .5s }
-.fade-in-list .fade-in-list-item:nth-child(2){ animation-delay: 1s }
-.fade-in-list .fade-in-list-item:nth-child(3){ animation-delay: 1.5s }
-.fade-in-list .fade-in-list-item:nth-child(4){ animation-delay: 2s }
-.fade-in-list .fade-in-list-item:nth-child(5){ animation-delay: 2.5s }
-.fade-in-list .fade-in-list-item:nth-child(6){ animation-delay: 3s }
-.fade-in-list .fade-in-list-item:nth-child(7){ animation-delay: 3.5s }
-.fade-in-list .fade-in-list-item:nth-child(8){ animation-delay: 4s }
-.fade-in-list .fade-in-list-item:nth-child(9){ animation-delay: 4.5s }
-.fade-in-list .fade-in-list-item:nth-child(10){ animation-delay: 5s }
+.present .fade-in-list.current-fragment .fade-in-list--item {
+  animation: fadeIn 1s linear;
+  animation-fill-mode:both;
+}
 
+.fade-in-list:not(.fragment) .fade-in-list--item:nth-child(1){ animation-delay: .5s }
+.fade-in-list:not(.fragment) .fade-in-list--item:nth-child(2){ animation-delay: 1s }
+.fade-in-list:not(.fragment) .fade-in-list--item:nth-child(3){ animation-delay: 1.5s }
+.fade-in-list:not(.fragment) .fade-in-list--item:nth-child(4){ animation-delay: 2s }
+.fade-in-list:not(.fragment) .fade-in-list--item:nth-child(5){ animation-delay: 2.5s }
+
+.fade-in-list.fragment{
+  max-height: 0;
+  height: 0;
+}
+
+.fade-in-list.curret-fragment{
+  max-height: 900px;
+  height: initial;
+}
+
+.fade-in-list--item{
+  padding-bottom: 3px !important;
+}
+
+.fade-in-list.fragment .fade-in-list--item:nth-child(1){ animation-delay: .5s }
+.fade-in-list.fragment .fade-in-list--item:nth-child(2){ animation-delay: 1s }
+.fade-in-list.fragment .fade-in-list--item:nth-child(3){ animation-delay: 1.5s }
+.fade-in-list.fragment .fade-in-list--item:nth-child(4){ animation-delay: 2s }
+.fade-in-list.fragment .fade-in-list--item:nth-child(5){ animation-delay: 2.5s }
 
 /****************************************************************
-*****\  =HIGHLIGHTING ELEMENT (ON SLIDE SHOW) \*******************************************************
+*****\  =UNDERLINE ELEMENT (ON SLIDE SHOW) \*******************************************************
 ***************************************************************************************/
 
-.highlight-middle-out
+.underline-animated
 {
     /*display: inline-block;*/
+    padding-bottom: 3px !important;
     position: relative;
-    padding-bottom: 3px;
 }
-.highlight-middle-out:after 
+
+.underline-animated:after 
 {
     content: '';
     display: block;
     margin: auto;
-    height: 3px;
     width: 0px;
     background: transparent;
-    transition: width 1s ease, background-color 1s ease;
+    height: 0px;
+    transition: width 1s ease, background-color 1s ease, height 0.5s ease;
 }
 
-.present .highlight-middle-out:after 
+.present .underline-animated:after 
 {
     width: 100%;
-    background: blue;
+    background: red;
+    height: 4px;
 }
+
+
+/****************************************************************
+*****\  =MISC \*******************************************************
+***************************************************************************************/
+
+.highlight-first-letter::first-letter {
+  color: orangered;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+.no-bullets {
+  list-style-type:none !important;
+} 
