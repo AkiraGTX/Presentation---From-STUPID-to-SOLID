@@ -1,0 +1,96 @@
+
+/****************************************************************
+*****\  =FADE-OUT AND REMOVE ELEMENT AFTER DELAY (ON SLIDE SHOW) \*******************************************************
+***************************************************************************************/
+@keyframes fadeOut { 
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  10% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    height: 0; 
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.fade-out-1s {
+    transition: opacity 0.5s, visibility 0.5s, padding 0.1s ease-out 1s, margin 0.1s ease-out 1s, max-height 0.2s ease-out 1s;
+    max-height: 100px;
+}
+
+.present .fade-out-1s {
+ /* animation: fadeOut 1s linear;
+  animation-fill-mode:both;*/
+    opacity: 0;
+    visibility: hidden;
+    /*height: 0;*/
+    margin: 0;
+    padding: 0;
+    max-height: 0;
+}
+
+
+/****************************************************************
+*****\  =FADE-IN LIST ITEMS (ON SLIDE SHOW) \*******************************************************
+***************************************************************************************/
+
+@keyframes fadeIn { 
+  0% {
+    opacity: 0;
+    /* transform: scale(.1); */
+  }
+  100% {
+    opacity: 1;
+    /* transform: scale(1); */
+  }
+}
+
+.present .fade-in-list .fade-in-list-item {
+  animation: fadeIn 1s linear;
+  animation-fill-mode:both;
+}
+
+.fade-in-list .fade-in-list-item:nth-child(1){ animation-delay: .5s }
+.fade-in-list .fade-in-list-item:nth-child(2){ animation-delay: 1s }
+.fade-in-list .fade-in-list-item:nth-child(3){ animation-delay: 1.5s }
+.fade-in-list .fade-in-list-item:nth-child(4){ animation-delay: 2s }
+.fade-in-list .fade-in-list-item:nth-child(5){ animation-delay: 2.5s }
+.fade-in-list .fade-in-list-item:nth-child(6){ animation-delay: 3s }
+.fade-in-list .fade-in-list-item:nth-child(7){ animation-delay: 3.5s }
+.fade-in-list .fade-in-list-item:nth-child(8){ animation-delay: 4s }
+.fade-in-list .fade-in-list-item:nth-child(9){ animation-delay: 4.5s }
+.fade-in-list .fade-in-list-item:nth-child(10){ animation-delay: 5s }
+
+
+/****************************************************************
+*****\  =HIGHLIGHTING ELEMENT (ON SLIDE SHOW) \*******************************************************
+***************************************************************************************/
+
+.highlight-middle-out
+{
+    /*display: inline-block;*/
+    position: relative;
+    padding-bottom: 3px;
+}
+.highlight-middle-out:after 
+{
+    content: '';
+    display: block;
+    margin: auto;
+    height: 3px;
+    width: 0px;
+    background: transparent;
+    transition: width 1s ease, background-color 1s ease;
+}
+
+.present .highlight-middle-out:after 
+{
+    width: 100%;
+    background: blue;
+}
