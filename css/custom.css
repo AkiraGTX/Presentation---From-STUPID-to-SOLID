@@ -67,6 +67,7 @@
 .fade-in-list:not(.fragment) .fade-in-list--item:nth-child(3){ animation-delay: 1.5s }
 .fade-in-list:not(.fragment) .fade-in-list--item:nth-child(4){ animation-delay: 2s }
 .fade-in-list:not(.fragment) .fade-in-list--item:nth-child(5){ animation-delay: 2.5s }
+.fade-in-list:not(.fragment) .fade-in-list--item:nth-child(6){ animation-delay: 3s }
 
 .fade-in-list.fragment{
   max-height: 0;
